@@ -276,3 +276,26 @@ window.onload = () => {
         if (activeUrl) loadSheetsCSV(activeUrl);
     }, 60 * 5000);
 };
+
+// Função que ativa o tela cheia
+function ativarFullscreen() {
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari / iOS */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* Edge antigo */
+        elem.msRequestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    }
+}
+
+// Vincula o clique da logo para chamar a função de tela cheia
+const logo = document.getElementById('logo-svg');
+
+if (logo) {
+    logo.addEventListener('click', () => {
+        ativarFullscreen();
+    });
+}
